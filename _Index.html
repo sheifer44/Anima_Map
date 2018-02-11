@@ -213,22 +213,6 @@ dashArray: '3',
       layers: [Gaia, cities, paises]
     }).setView([0, 0], 3);
 
-
-  //var newMarker = new L.marker([0, 0], {draggable:'true', icon: redIcon}).addTo(map);
-   newMarker.on('click', function(e) {
-      
-      alert(e.latlng);
-
-    });
-
-/*   map.on('click', function(e) {
-    
-        if ($('#toolbar .hamburger').parent().hasClass('open')) {
-        $('#toolbar .hamburger').parent().removeClass('open')}        
-
-    });*/
-
-
 var southWest = L.latLng(-300, -180),
     northEast = L.latLng(300, 180);
     bounds = L.latLngBounds(southWest, northEast);
