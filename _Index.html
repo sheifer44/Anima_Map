@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″ />
+
+<!-- Queda cambiar los iconos a los marcadores según su tipo-->
+
+<!-- Terminar de rellenar datos -->
+
+<!-- Poner leyenda -->
+
+<!-- Guardar-cargar NOTAS 
+https://codepen.io/k3no/pen/amwpqk
+https://codepen.io/anon/pen/VKWZLd
+https://github.com/eligrey/FileSaver.js
+https://codepen.io/nik10110/pen/PbyNoW
+https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_fileupload_get
+-->
+
+
+<meta name="language" content="spanish">
+<meta name="viewport" content="width=device-width">
+
+<meta name="description" content="Quill is a free, open source WYSIWYG editor built for the modern web. Completely customize it for any need with its modular architecture and expressive API.">
+
+
+
+<meta name="twitter:title" content="Snow Theme - Quill">
+
+<meta name="twitter:description" content="Quill is a free, open source rich text editor built for the modern web.">
+<meta name="twitter:image" content="http://quilljs.com/assets/images/brand-asset.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://quilljs.com/standalone/snow/">
+<meta property="og:image" content="http://quilljs.com/assets/images/brand-asset.png">
+<meta property="og:title" content="Snow Theme - Quill">
+<meta property="og:site_name" content="Quill">
+ 
+
+  <title>Anima: Beyond Fantasy</title>
+  
+</head>
+
+<body>
+
+  <link rel="canonical" href="https://quilljs.com/standalone/snow/">
+  <link type="application/atom+xml" rel="alternate" href="https://quilljs.com/feed.xml" title="Quill - Your powerful rich text editor" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
+  <link rel="stylesheet" href="css/quill.snow.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+
+
+
+<div id="toolbar2">
+    <div class="hamburger2">
+      <span>NOTAS</span>
+    </div>
+    <div id="tourstops2">
+      
+      <div id="snow-container"></div>
+
+</form>
+</div>
+</div>
+
+
+<div id="mapwrap">
+
+  <div id="toolbar">
+    <div class="hamburger">
+      <span>Abrir/Cerrar</span>
+    </div>
+    <div id="tourstops">
+      <h1 id="title_">Anima: Beyond Fantasy</h1>
+      <p id="sname">Mapa interactivo de Gaia</p>
+      <p id="sdatos">Datos...</p>
+  
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script src="js/quill.min.js"></script>
+
+<script>
+
+
+  var quill = new Quill('#snow-container', {
+    placeholder: 'Escribe algo épico...',
+    theme: 'snow'
+  });
+</script>
+
+    </div>
+  </div>
+
+  
+<div id="map" style="width: 100%;
+  height: 600px;
+  height: 100vh;
+  z-index: 1;"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="js/quill.min.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/67683/ccbuildings.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="js/index.js"></script>
+<script  src="js/leaflet-color-markers.js"></script>
+
+<script src="Geojson/countries.geojson"></script>
+
+<script>
+
+var paisesLayer = L.geoJson(paises, {
+
+fillOpacity: 0.3,
+dashArray: '3',
+
+  style: function(feature) {
+      switch (feature.properties.Region) {
+        case 'Costa del Comercio': return {color: "#ff0000"};
+        case 'Sacrosanto Imperio de Abel':   return {color: "#ffffff"};
+        case 'Alianza Azur':   return {color: "#0000ff"};
+        case 'Estados Independientes':   return {color: "#30ab00"};
+        case 'Las Tierras Oscuras':   return {color: "#dfff00"};
+        case 'Lucrecio':   return {color: "#6d2500"};
+        case 'Tol Raliko':   return {color: "#000000"};
+        case 'Yermos Gélidos':   return {color: "#0c00ff"};
+        case 'Regiones Orientales':   return {color: "#af006b"};
+        case 'Esdados episcopales':   return {color: "#d39900"};
+    }
+},
+
+  onEachFeature: function(feature, layer) {
+
+  var thisLayer = layer;
+
+  layer.bindTooltip(feature.properties.Nombre);
+   
+    thisLayer.on('click', function(){
+
+      if ($('#toolbar .hamburger').parent().hasClass('open')) {
+        $('#toolbar .hamburger').parent().removeClass('open')
+        
+        setTimeout(function(){
+        $('#toolbar .hamburger').parent().addClass('open')
+        document.getElementById("title_").innerHTML = feature.properties.Nombre;
+        document.getElementById("sdatos").innerHTML = feature.properties.Descripcion + "<p><b>Cultura y Sociedad:</b><p> " + feature.properties.CultSoc + "<p><b>Afrontar lo sobrenatural:</b><p> " + feature.properties.Sobrenatural + "<p><b>Historia:</b><p> " + feature.properties.Historia + "<p><b>Tramas:</b><p> " + feature.properties.Tramas + "<p><b>Arquetipos genéricos de " + feature.properties.Nombre + ":</b><p> " + feature.properties.Arquetipos + "<p><b>Raices culturales y clase social:</b><p> " + feature.properties.ClaseSocial + "<p><b>Otros:</b><p> " + feature.properties.Otros;
+        document.getElementById("sname").innerHTML = "<p><b>Capital:</b> " + feature.properties.Capital + "<p><b>Número de habitantes:</b> " + feature.properties.Habitantes + "<p><b>Étnias principales:</b> " + feature.properties.Etnias + "<p><b>Forma de Gobierno:</b> " + feature.properties.Gobierno + "<p><b>Idiomas:</b> " + feature.properties.Idiomas + "<p><b>Religión:</b> " + feature.properties.Religion + "<p><b>Nivel tecnológico:</b> " + feature.properties.Tecno + "<p><b>Gentilicio:</b> " + feature.properties.Gentilicio + "<p><b>Bandera:</b> " + feature.properties.Bandera + "<p><b>Nombres masculinos:</b> " + feature.properties.NombresMasculinos + "<p><b>Nombres femeninos:</b> " + feature.properties.NombresFemeninos + "<p><b>Apellidos:</b> " + feature.properties.Apellidos;
+        }, 500);
+
+      } else {
+      $('#toolbar .hamburger').parent().addClass('open')
+      document.getElementById("title_").innerHTML = feature.properties.Nombre;
+        document.getElementById("sdatos").innerHTML = feature.properties.Descripcion + "<p><b>Cultura y Sociedad:</b><p> " + feature.properties.CultSoc + "<p><b>Afrontar lo sobrenatural:</b><p> " + feature.properties.Sobrenatural + "<p><b>Historia:</b><p> " + feature.properties.Historia + "<p><b>Tramas:</b><p> " + feature.properties.Tramas + "<p><b>Arquetipos genéricos de " + feature.properties.Nombre + ":</b><p> " + feature.properties.Arquetipos + "<p><b>Raices culturales y clase social:</b><p> " + feature.properties.ClaseSocial + "<p><b>Otros:</b><p> " + feature.properties.Otros;
+        document.getElementById("sname").innerHTML = "<p><b>Capital:</b> " + feature.properties.Capital + "<p><b>Número de habitantes:</b> " + feature.properties.Habitantes + "<p><b>Étnias principales:</b> " + feature.properties.Etnias + "<p><b>Forma de Gobierno:</b> " + feature.properties.Gobierno + "<p><b>Idiomas:</b> " + feature.properties.Idiomas + "<p><b>Religión:</b> " + feature.properties.Religion + "<p><b>Nivel tecnológico:</b> " + feature.properties.Tecno + "<p><b>Gentilicio:</b> " + feature.properties.Gentilicio + "<p><b>Bandera:</b> " + feature.properties.Bandera + "<p><b>Nombres masculinos:</b> " + feature.properties.NombresMasculinos + "<p><b>Nombres femeninos:</b> " + feature.properties.NombresFemeninos + "<p><b>Apellidos:</b> " + feature.properties.Apellidos;
+    }
+
+    map.fitBounds(thisLayer.getBounds(),{maxZoom:5});
+
+    });
+  }
+});
+  
+
+  var ciudadesLayer = L.geoJson(ciudades, {
+    
+  onEachFeature: function(feature, layer) {
+  var thisLayer = layer;
+
+
+
+   layer.bindPopup();
+
+    thisLayer.on('click', function(){
+
+      var thisLat = thisLayer.feature.geometry.coordinates[1];
+      var thisLon = thisLayer.feature.geometry.coordinates[0];
+
+
+     if ($('#toolbar .hamburger').parent().hasClass('open')) {
+        $('#toolbar .hamburger').parent().removeClass('open')
+        
+        setTimeout(function(){
+        $('#toolbar .hamburger').parent().addClass('open')
+        document.getElementById("title_").innerHTML = feature.properties.Nombre;
+        document.getElementById("sdatos").innerHTML = feature.properties.Datos;
+        document.getElementById("sname").innerHTML = "<h2>" + "(" + feature.properties.Tipo + ", " + feature.properties.Habitantes + " habitantes)" + "</h2>";
+        }, 500);
+
+      } else {
+      $('#toolbar .hamburger').parent().addClass('open')
+      document.getElementById("title_").innerHTML = feature.properties.Nombre;
+      document.getElementById("sdatos").innerHTML = feature.properties.Datos;
+      document.getElementById("sname").innerHTML = "<h2>" + "(" + feature.properties.Tipo + ", " + feature.properties.Habitantes + " habitantes)" + "</h2>";
+    }
+
+    
+    thisLayer.getPopup().setContent(feature.properties.Nombre);
+    map.setView([thisLat,thisLon-5], 6);
+
+    });
+  }
+});
+
+
+
+    var cities = L.layerGroup([ciudadesLayer]);
+    var paises = L.layerGroup([paisesLayer]);
+    
+    var Gaia = L.tileLayer('tiles/{z}/{x}/{y}.png', {
+    minZoom: 3,
+    maxZoom: 6,
+    continuousWorld: false,
+    noWrap: true,
+    crs: L.CRS.Simple
+    });
+
+    //var popup = L.popup();
+
+    var map = L.map('map', {
+      zoomControl: false,
+      layers: [Gaia, cities, paises]
+    }).setView([0, 0], 3);
+
+
+  var newMarker = new L.marker([0, 0], {draggable:'true', icon: redIcon}).addTo(map);
+   newMarker.on('click', function(e) {
+      
+      alert(e.latlng);
+
+    });
+
+/*   map.on('click', function(e) {
+    
+        if ($('#toolbar .hamburger').parent().hasClass('open')) {
+        $('#toolbar .hamburger').parent().removeClass('open')}        
+
+    });*/
+
+
+var southWest = L.latLng(-300, -180),
+    northEast = L.latLng(300, 180);
+    bounds = L.latLngBounds(southWest, northEast);
+
+map.setMaxBounds(bounds);
+map.on('drag', function() {
+  map.panInsideBounds(bounds, { animate: false });
+});
+
+    var baseMaps = {
+    "Gaia": Gaia
+    };
+
+    var overlayMaps = {
+    "Cities": cities,
+    "Paies": paises,
+    };
+
+    L.control.layers(null, overlayMaps).addTo(map);
+
+  </script>
+
+</body>
+</html>
