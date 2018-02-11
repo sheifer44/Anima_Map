@@ -58,6 +58,26 @@ th, td {
   right: 8px;
 }
 
+/*-------------Donaciones-----------------*/
+
+#toolbar3 {
+  background: rgba(255, 255, 255, 1);
+  opacity: .95;
+  width: 175px;
+  height: 100px;
+  position: absolute;
+  padding-left: 10px;
+  right: 5px;
+  top:  100px;
+  box-shadow: -10px -10px 70px grey;
+
+  z-index: 100;
+  -webkit-transition: .5s right;
+  transition: .5s right;
+  /*padding: 20px;*/
+  box-sizing: border-box;
+}   
+
 /*------------Caja de texto------------------*/
 
   .standalone-container {
