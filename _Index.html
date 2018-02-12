@@ -2,16 +2,10 @@
 <html>
 <head>
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″ />
-
 <meta name="language" content="spanish">
 <meta name="viewport" content="width=device-width">
-
 <meta name="description" content="Quill is a free, open source WYSIWYG editor built for the modern web. Completely customize it for any need with its modular architecture and expressive API.">
-
-
-
 <meta name="twitter:title" content="Snow Theme - Quill">
-
 <meta name="twitter:description" content="Quill is a free, open source rich text editor built for the modern web.">
 <meta name="twitter:image" content="http://quilljs.com/assets/images/brand-asset.png">
 <meta property="og:type" content="website">
@@ -35,7 +29,54 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
 
+<div id="toolbar4">
+  <div class="hamburger4" align="center">
+      <span >[X]</span>
+  </div>
+    <div id="tourstops4">
 
+        <div class="Comprar1" align="center">
+          <span valign="middle" >
+            <a style="color:white" href="http://www.edgeent.com/libros/articulo/anima_beyond_fantasy/gaia_mas_alla_de_los_suenos" target="_blank">Comprar Gaia</a>
+          </span>
+        </div>
+
+        <div class="Comprar2" align="center">
+          <span align="center" valign="middle">
+            <a style="color:white" href="http://www.edgeent.com/libros/articulo/anima_beyond_fantasy/gaia_2_mas_alla_del_espejo" target="_blank">Comprar Gaia 2</a>
+          </span>
+        </div>
+
+        <div class="Comprar3" align="center">
+          <span align="center" valign="middle">
+            <a style="color:white" href="http://www.edgeent.com/libros/articulo/anima_beyond_fantasy/anima_beyond_fantasy_core_exxet" target="_blank">Comprar Core Exxet</a>
+          </span>
+        </div>
+
+      <h2 align="center">¡¡Apoya a los creadores de Ánima: Beyond Fantasy!!</h2>
+      <p align="center" style='padding-top:25px'>
+        <img src="http://www.edgeent.com/home/check_public_big_img/edg9102?timestamp=1518433092998" style="width:245px">
+        <img src="http://www.edgeent.com/home/check_public_big_img/edg9110?timestamp=1518433114092" style="width:245px">
+        <img src="http://www.edgeent.com/home/check_public_big_img/edg9090?timestamp=1518440172606" style="width:245px">
+      </p>
+      <p align="center" style='padding-top:115px;font-size: 10px'>El contenido de esta aplicación (descripciones, nombres e imágenes) pertenece a <strong>Edge Entertaiment</strong>, yo sólo lo he adaptado a éste mapa para usarlo más facilmente.</p>
+    </div>
+</div>
+
+
+<div id="toolbar3">
+    <div id="tourstops3">
+      <p>¿Me ayudas un poquitín?
+      <p/>
+       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="MHBVC6GDG88LU">
+<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
+<img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+    </div>
+</div>
 
 <div id="toolbar2">
     <div class="hamburger2">
@@ -44,20 +85,6 @@
     <div id="tourstops2">
       
       <div id="snow-container"></div>
-
-</div>
-</div>
- 
-<div id="toolbar3">
-    <div id="tourstops3">
-     <p>¿Me ayudas un poquitín?
-     <p/>
-       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="MHBVC6GDG88LU">
-<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
-<img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
-</form>
 
     </div>
 </div>
@@ -218,8 +245,6 @@ dashArray: '3',
     noWrap: true,
     crs: L.CRS.Simple
     });
-
-    //var popup = L.popup();
 
     var map = L.map('map', {
       zoomControl: false,
