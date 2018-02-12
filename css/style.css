@@ -1,10 +1,8 @@
 table {
-/*   width: 100%;*/
    border: 1px solid #000;
 }
 
 th, td {
-   /*width: 25%;*/
    text-align: center;
    vertical-align: center;
    border: 1px solid #000;
@@ -56,6 +54,98 @@ th, td {
           transform: rotate(-90deg);
   top: 30px;
   right: 8px;
+}
+
+/*-------------Comprar Anima-----------------*/
+
+#toolbar4 {
+  background: rgba(255, 255, 255, 1);
+  opacity: .95;
+  width: 800px;
+  height: 510px;
+  position: absolute;
+  padding: 25px;
+  right: 20%;
+  top:  100px;
+  box-shadow: -10px -10px 70px grey;
+
+  z-index: 100;
+  -webkit-transition: .5s top;
+  transition: .5s top;
+  box-sizing: border-box;
+}  
+
+#toolbar4.close4 {
+  top: 970px;
+  opacity: .95;
+}
+
+#toolbar4 .hamburger4 {
+  height: 25px;
+  width: 25px;
+  background: #000;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, .3);
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+#toolbar4 .Comprar1 {
+  color: #fff; 
+  font-size: 20px;
+  height: 50px;
+  width: 100px;
+  background: #000;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, .3);
+  position: absolute;
+  right: 600px;
+  top: 400px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+#toolbar4 .Comprar2 {
+  color: #fff; 
+  font-size: 18px; 
+  height: 50px;
+  width: 100px;
+  background: #000;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, .3);
+  position: absolute;
+  right: 350px;
+  top: 400px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+#toolbar4 .Comprar3 {
+  color: #fff; 
+  font-size: 18px; 
+  height: 50px;
+  width: 100px;
+  background: #000;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, .3);
+  position: absolute;
+  right: 100px;
+  top: 400px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+.hamburger4 span {
+  color: #fff;
+  display: inline-block;
+  position: relative;
 }
 
 /*-------------Donaciones-----------------*/
