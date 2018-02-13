@@ -1,3 +1,62 @@
+/*---------------Anima logo--------------------------*/
+
+.animalogo{
+  bottom: 12px;
+  left: 0%;
+  position: absolute;
+  z-index: 90;
+  width:12%;
+  filter: drop-shadow(0.5px 0px 1.5px white);
+
+} 
+
+/*---------------Leyenda--------------------------*/
+
+  #MiLegend {
+        position:absolute;
+        bottom:20px;
+        right:10px;
+        line-height: 18px;
+        color: #555;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        padding:10px;
+        width:415px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        line-height: 18px;
+        color: #555;
+        z-index: 100;
+        }
+  #MiLegend i {
+          width: 18px;
+          height: 18px;
+          float: left;
+          margin-right: 8px;
+          opacity: 0;
+          z-index: 100;
+        }
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+/*------------------------------------------*/
+p {
+  text-align: justify;
+  padding-right: 5px;
+}
+
 table {
    border: 1px solid #000;
 }
@@ -13,8 +72,8 @@ th, td {
   background: rgba(255, 255, 255, 1);
   opacity: .7;
   width: 500px;
-  height: 46px;
-  height: 46vh;
+  height: 35%;
+  /*height: 35vh;*/
   position: absolute;
   right: -490px;
   top:  400px;
@@ -83,7 +142,7 @@ th, td {
 #toolbar4 .hamburger4 {
   height: 25px;
   width: 25px;
-  background: #000;
+  opacity: 0;
   box-shadow: 1px 0 2px rgba(0, 0, 0, .3);
   position: absolute;
   right: 15px;
@@ -91,7 +150,6 @@ th, td {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   border: 1px solid #333;
-  cursor: pointer;
 }
 
 #toolbar4 .Comprar1 {
@@ -142,19 +200,13 @@ th, td {
   cursor: pointer;
 }
 
-.hamburger4 span {
-  color: #fff;
-  display: inline-block;
-  position: relative;
-}
-
 /*-------------Donaciones-----------------*/
 
 #toolbar3 {
   background: rgba(255, 255, 255, 1);
   opacity: .95;
   width: 175px;
-  height: 100px;
+  height: 125px;
   position: absolute;
   padding-left: 10px;
   right: 5px;
@@ -175,8 +227,8 @@ th, td {
     max-width: 720px;
   }
   #snow-container {
-    height: 250px;
-
+  max-height: 27vh;
+  height: 27vh;
   }
 
 /*-------------Menu izquierdo-----------------*/
