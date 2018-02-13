@@ -29,9 +29,15 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
 
-<div id="toolbar4">
+
+  <a href="http://www.edgeent.com/libros/coleccion/anima_beyond_fantasy" target="_blank">
+    <img class="animalogo" src="http://www.elroldesiempreonline.com/imagenes/juegos/galerias/anima5.png">
+  </a>
+
+
+<div id="toolbar4" class="hamburger4">
   <div class="hamburger4" align="center">
-      <span >[X]</span>
+      
   </div>
     <div id="tourstops4">
 
@@ -66,7 +72,7 @@
 
 <div id="toolbar3">
     <div id="tourstops3">
-      <p>¿Me ayudas un poquitín?
+      <p style="text-align: center">¿Me ayudas un poquitín?
       <p/>
        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -91,6 +97,44 @@
 
 
 <div id="mapwrap">
+
+<div class="legend" id="MiLegend">
+            <div style="text-align: center;"><strong>○ Regiones del antiguo Continente ○</strong></div>
+<table style="width: 418px; height: 33px; border: 0px solid #000;" >
+<tbody>
+<tr>
+<td style="border: 0px solid #000"><span style="color: #ffffff; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">El sacrosanto imperio de Abel</td>
+<td style="border: 0px solid #000"><span style="color: #cc3300; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">Estados episcopales</td>
+</tr>
+<tr>
+<td style="border: 0px solid #000"><span style="color: #0099ff; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">Alianza Azur</td>
+<td style="border: 0px solid #000"><span style="color: #eaaa15; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">Tierras de Al-Enneth</td>
+</tr>
+<tr>
+<td style="border: 0px solid #000"><span style="color: #0c00ff; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">Yermos Gélidos</td>
+<td style="border: 0px solid #000"><span style="color: #30ab00;border: 0px solid #000; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px solid #000">Estados Independientes</td>
+</tr>
+<tr>
+<td style="border: 0px solid #000"><span style="color: #dfff00; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px ">Tieras Oscuras</td>
+<td style="border: 0px solid #000"><span style="color: #af006b; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">Tierras Orientales</td>
+</tr>
+<tr>
+<td style="border: 0px solid #000"><span style="color: #ff0300; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">Costa de Comercio</td>
+<td style="border: 0px solid #000"><span style="color: #002e4d; font-size: 32px;">■</span></td>
+<td style="text-align: left;border: 0px">Mar Interior</td>
+</tr>
+</tbody>
+</table>
+          </div>
 
   <div id="toolbar">
     <div class="hamburger">
@@ -146,18 +190,19 @@ var paisesLayer = L.geoJson(paises, {
 fillOpacity: 0.3,
 dashArray: '3',
 
+
   style: function(feature) {
       switch (feature.properties.Region) {
         case 'Costa del Comercio': return {color: "#ff0000"};
         case 'Sacrosanto Imperio de Abel':   return {color: "#ffffff"};
-        case 'Alianza Azur':   return {color: "#0000ff"};
+        case 'Alianza Azur':   return {color: "#0099ff"};
         case 'Estados Independientes':   return {color: "#30ab00"};
         case 'Las Tierras Oscuras':   return {color: "#dfff00"};
-        case 'Lucrecio':   return {color: "#6d2500"};
-        case 'Tol Raliko':   return {color: "#000000"};
+        case 'El Mar Interior':   return {color: "#002e4d"};
+        case 'Al-Enneth':   return {color: "#eaaa15"};
         case 'Yermos Gélidos':   return {color: "#0c00ff"};
         case 'Regiones Orientales':   return {color: "#af006b"};
-        case 'Esdados episcopales':   return {color: "#d39900"};
+        case 'Esdados episcopales':   return {color: "#cc3300"};
     }
 },
 
@@ -194,11 +239,9 @@ dashArray: '3',
   
 
   var ciudadesLayer = L.geoJson(ciudades, {
-    
+  
   onEachFeature: function(feature, layer) {
   var thisLayer = layer;
-
-
 
    layer.bindPopup();
 
@@ -237,7 +280,7 @@ dashArray: '3',
 
     var cities = L.layerGroup([ciudadesLayer]);
     var paises = L.layerGroup([paisesLayer]);
-    
+
     var Gaia = L.tileLayer('tiles/{z}/{x}/{y}.png', {
     minZoom: 3,
     maxZoom: 6,
@@ -256,9 +299,28 @@ var southWest = L.latLng(-300, -180),
     bounds = L.latLngBounds(southWest, northEast);
 
 map.setMaxBounds(bounds);
+
+    map.on('baselayerchange', function (event) {
+          //The LayerEvent/LayersControlEvent properties are undefined
+
+          if (map.hasLayer(overlayMaps["Paies"])){
+          document.getElementById('MiLegend').style.opacity= '1';
+          };
+          if (map.hasLayer(overlayMaps["Cities"])){
+          document.getElementById('MiLegend').style.opacity= '0';
+          };
+          if (map.hasLayer(overlayMaps["Nada"])){
+          document.getElementById('MiLegend').style.opacity= '0';
+          };
+       });
+
 map.on('drag', function() {
   map.panInsideBounds(bounds, { animate: false });
 });
+
+map.on('click', function(e) {        
+        $('#toolbar4 .hamburger4').parent().addClass('close4');
+    });
 
     var baseMaps = {
     "Gaia": Gaia
@@ -267,10 +329,10 @@ map.on('drag', function() {
     var overlayMaps = {
     "Cities": cities,
     "Paies": paises,
-    };
+    "Nada": L.tileLayer('', {minZoom: 3,maxZoom: 6,continuousWorld: false,noWrap: true,crs: L.CRS.Simple}),};
 
-    L.control.layers(null, overlayMaps).addTo(map);
-
+    L.control.layers(overlayMaps, null).addTo(map);
+    
   </script>
 
 </body>
